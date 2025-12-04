@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:5173" # tu accéderas à l'app sur http://localhost:3000
+    container_name: react_vite_app
+    restart: unless-stopped
