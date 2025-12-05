@@ -3,9 +3,11 @@
   line-height: 1.5;
   font-weight: 400;
 
+  /* color palette */
+  --color-foreground: rgba(255, 255, 255, 0.92);
+  --color-background: #242424;
+  --color-muted: #6b7280;
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,15 +26,123 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  width: 100%;
   min-width: 320px;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+/* Responsive layout utilities - mobile first */
+:root {
+  --container-max: 1100px;
+  --page-padding: 1rem;
+  --card-radius: 16px;
+  --muted: #6b7280;
+  --accent: #646cff;
+  --bg-card: rgba(255, 255, 255, 0.03);
+}
+
+.app-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: calc(var(--page-padding) * 1.2);
+  box-sizing: border-box;
+}
+
+.quiz-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.quiz-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.quiz-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.quiz-progress {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.quiz-button {
+  background: linear-gradient(180deg, #121212 0%, #1a1a1a 100%);
+  color: #fff;
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: var(--card-radius);
+  padding: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.result-card {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+/* Make typographic scale responsive */
+h1 {
+  font-size: clamp(1.6rem, 2.2vw + 1rem, 3.2rem);
+}
+h2 {
+  font-size: clamp(1.25rem, 1.8vw + 0.8rem, 2.2rem);
+}
+p,
+li {
+  font-size: clamp(0.95rem, 1.2vw + 0.4rem, 1.1rem);
+}
+
+/* Responsive card / layout adjustments */
+@media (min-width: 640px) {
+  .app-container {
+    padding: 1.5rem;
+  }
+  .card {
+    padding: 1.25rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .quiz-page {
+    gap: 1.5rem;
+  }
+  .quiz-stats {
+    font-size: 1rem;
+  }
+}
+
+/* Accessibility and small refinements */
+.quiz-button:active {
+  transform: translateY(1px);
+}
+.muted {
+  color: var(--muted);
 }
 
 button {
