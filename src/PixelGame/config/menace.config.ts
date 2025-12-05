@@ -3,136 +3,140 @@ import type { Entity } from "../types/ENtity";
 export const THREATS: Entity[] = [
   {
     name: "Centurion WinDominator XI",
-    lifePoints: 120,
     arguments: [
       {
-        label: "Mise à Jour Catapulte",
+        label: "Mise à jour forcée qui ralentit l’ordinateur",
         type: "obsolescence",
         counterType: "linux",
       },
       {
-        label: "Écran Bleu Impérial",
+        label: "Panne générale du système (écran bleu)",
         type: "obsolescence",
         counterType: "résilience",
       },
       {
-        label: "Licence Légionnaire",
+        label: "Licence payante obligatoire pour continuer à l’utiliser",
         type: "dépendance",
         counterType: "open-source",
       },
       {
-        label: "Télémetrie d’Espionnage",
+        label: "Collecte automatique des usages et des données des élèves",
         type: "surveillance",
         counterType: "protection-données",
       },
     ],
+    spriteUrl: "/public/assets/pixelgame/menaces/menace1.gif",
   },
 
   {
     name: "Cloudus Maximus 365",
-    lifePoints: 140,
     arguments: [
       {
-        label: "Paywall Temporel",
+        label: "Fonctionnalités bloquées sans abonnement payant",
         type: "dépendance",
         counterType: "services-libres",
       },
       {
-        label: "Orage Synchronisé",
+        label: "Fichiers synchronisés en permanence sur des serveurs externes",
         type: "surveillance",
         counterType: "décentralisation",
       },
       {
-        label: "Pluie d’Abonnements",
+        label: "Multiplication des abonnements pour chaque petit service",
         type: "dépendance",
         counterType: "mutualisation",
       },
       {
-        label: "Vapeur de Données",
+        label: "Données stockées hors de l’établissement et parfois hors UE",
         type: "surveillance",
         counterType: "hébergement-local",
       },
     ],
+    spriteUrl: "/public/assets/pixelgame/menaces/menace2.gif",
   },
 
   {
     name: "Obsoletus Rex",
-    lifePoints: 150,
     arguments: [
       {
-        label: "Ventilateur Mourant",
+        label:
+          "Ordinateur ralenti qu’on veut remplacer alors qu’il fonctionne encore",
         type: "obsolescence",
         counterType: "réemploi",
       },
       {
-        label: "Pilote Perdu",
+        label: "Périphériques qui ne marchent plus faute de pilotes à jour",
         type: "fermeture",
         counterType: "interopérabilité",
       },
       {
-        label: "Message Cryptique",
+        label:
+          "Messages techniques incompréhensibles qui cachent ce qui se passe",
         type: "surveillance",
         counterType: "transparence",
       },
       {
-        label: "Fin de Support Total",
+        label: "Fin officielle des mises à jour et de la sécurité",
         type: "obsolescence",
         counterType: "linux",
       },
     ],
+    spriteUrl: "/public/assets/pixelgame/menaces/menace3.gif",
   },
 
   {
     name: "Pub’Menhir",
-    lifePoints: 110,
     arguments: [
       {
-        label: "Pop-up Inarrêtable",
+        label: "Fenêtres de publicités qui s’ouvrent sans arrêt",
         type: "surveillance",
         counterType: "bloqueur-publicité",
       },
       {
-        label: "Tracking au Goudron",
+        label: "Suivi permanent de la navigation des élèves pour la publicité",
         type: "surveillance",
         counterType: "anonymisation",
       },
       {
-        label: "Cookie-Bombe",
+        label: "Cookies publicitaires qui profilent les utilisateurs",
         type: "surveillance",
         counterType: "protection-données",
       },
       {
-        label: "Vidéo Non-Skipable",
+        label: "Vidéos publicitaires imposées avant le contenu pédagogique",
         type: "dépendance",
         counterType: "souveraineté",
       },
     ],
+    spriteUrl: "/public/assets/pixelgame/menaces/menace1.gif",
   },
 
   {
     name: "Écosystor le Verrouillé",
-    lifePoints: 135,
     arguments: [
       {
-        label: "Câble Exclusif",
+        label:
+          "Câble propriétaire impossible à remplacer par un câble standard",
         type: "fermeture",
         counterType: "standard-ouvert",
       },
       {
-        label: "Forteresse d’Interopérabilité",
+        label:
+          "Système qui refuse de fonctionner avec d’autres logiciels ou matériels",
         type: "fermeture",
         counterType: "interopérabilité",
       },
       {
-        label: "Jardin Fermé",
+        label: "Écosystème fermé qui oblige à rester chez le même fournisseur",
         type: "fermeture",
         counterType: "modularité",
       },
       {
-        label: "MAJ Restrictive",
+        label: "Mises à jour qui bloquent les réparations ou logiciels tiers",
         type: "obsolescence",
         counterType: "réparabilité",
       },
     ],
+    spriteUrl: "/public/assets/pixelgame/menaces/menace1.gif",
   },
 ];

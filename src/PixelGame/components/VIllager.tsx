@@ -25,8 +25,11 @@ export function Villager({
         width: "320px",
         height: "320px",
         animationDelay: `${(villager.id % 5) * 0.15}s`,
+        filter: villager.isVisited
+          ? "grayscale(100%) brightness(0.8)"
+          : undefined,
       }}
-      onClick={onClick}
+      onClick={villager.isVisited ? undefined : onClick}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     />

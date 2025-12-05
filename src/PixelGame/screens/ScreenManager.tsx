@@ -15,7 +15,7 @@ const SCREENS = {
 export type ScreenType = (typeof SCREENS)[keyof typeof SCREENS];
 
 const ScreenManager: React.FC = () => {
-  const { gameState } = useContext(GameContext);
+  const { gameState, completeBattle } = useContext(GameContext);
 
   // L'écran par défaut est déterminé en fonction de l'état du jeu
   const getInitialScreen = (): ScreenType => {
@@ -33,6 +33,14 @@ const ScreenManager: React.FC = () => {
     setCurrentScreen(screen);
   };
 
+  const finishedBattle = (
+    isBattleWon: boolean,
+    villagerId: number | undefined
+  ) => {
+    completeBattle(isBattleWon, villagerId);
+    navigateTo(SCREENS.VILLAGE);
+  };
+
   // Rendu conditionnel basé sur l'écran actuel
   const renderScreen = () => {
     switch (currentScreen) {
@@ -41,7 +49,7 @@ const ScreenManager: React.FC = () => {
       case SCREENS.VILLAGE:
         return <VillageScreen onContinue={() => navigateTo(SCREENS.BATTLE)} />;
       case SCREENS.BATTLE:
-        return <BattleScreen onContinue={() => navigateTo(SCREENS.END)} />;
+        return <BattleScreen onContinue={finishedBattle} />;
       case SCREENS.END:
         return <EndScreen onContinue={() => navigateTo(SCREENS.INTRO)} />;
       default:

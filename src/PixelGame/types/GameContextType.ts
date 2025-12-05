@@ -6,6 +6,9 @@ export interface GameContextType {
   startGame: () => void;
   startBattle: (battleIndex: number) => void;
   setPlayerPseudo: (pseudo: string) => void;
-  completeBattle: (isBattleWon: boolean, villagerId: number) => void;
+  completeBattle: (
+    isBattleWon: boolean,
+    villagerId: number | undefined
+  ) => void;
   selectVillager: (villager: VillagerInfo) => void;
 }

@@ -6,7 +6,7 @@ export const INITIAL_GAME_STATE: GameState = {
   playerPseudo: "",
   completedBattles: 0,
   battlesWon: 0,
-  battlesCount: 5,
+  battlesCount: 4,
   villagers: villagersConfig,
 };
 
