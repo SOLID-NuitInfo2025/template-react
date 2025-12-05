@@ -28,15 +28,15 @@ const letterDescriptions = {
     content: (
       <>
         <p>
-          L'<strong>Inclusif</strong> désigne l'engagement à rendre le
-          numérique accessible à tous, sans discrimination. Cela inclut
-          l'accessibilité pour les personnes en situation de handicap, la
-          réduction de la fracture numérique et l'égalité des chances.
+          L'<strong>Inclusif</strong> désigne l'engagement à rendre le numérique
+          accessible à tous, sans discrimination. Cela inclut l'accessibilité
+          pour les personnes en situation de handicap, la réduction de la
+          fracture numérique et l'égalité des chances.
         </p>
         <p>
-          Un numérique inclusif garantit que chacun, quel que soit son âge,
-          son origine, ses capacités ou sa situation géographique, puisse
-          bénéficier des opportunités offertes par les technologies.
+          Un numérique inclusif garantit que chacun, quel que soit son âge, son
+          origine, ses capacités ou sa situation géographique, puisse bénéficier
+          des opportunités offertes par les technologies.
         </p>
       </>
     ),
@@ -137,9 +137,19 @@ function Home() {
           </section>
         )}
 
-        <Link to="/quiz">
-          <button className="quiz-button">Tester vos connaissances</button>
-        </Link>
+        <div className="home-actions">
+          <Link to="/quiz">
+            <button className="quiz-button">Tester vos connaissances</button>
+          </Link>
+          <Link to="/login">
+            <button
+              className="secondary-button"
+              aria-label="Aller à la page de connexion"
+            >
+              Se connecter
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
