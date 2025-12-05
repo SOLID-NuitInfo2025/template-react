@@ -178,12 +178,20 @@ export function BattleScreen({
             />
           </div>
 
-          <h2>Points du Villageois : {hp.toFixed(2)}%</h2>
+          <h2>
+            Influence de {menace?.name} sur {villager?.name} : {hp.toFixed(2)}%
+          </h2>
           <h3>Tour : {round}</h3>
-          <p>{actualMenaceArgument ? actualMenaceArgument.label : ""}</p>
+          <p>
+            Oh non {menace?.name} utilise l'argument :{" "}
+            {actualMenaceArgument ? actualMenaceArgument.label : ""}
+          </p>
 
           {/* ArgumentSelector doit accepter PlayerAbility[] */}
-          <ArgumentSelector args={options} selectArgument={selectArgument} />
+          <div className="answer-container">
+            <p>Qu'allez vous faire ?</p>
+            <ArgumentSelector args={options} selectArgument={selectArgument} />
+          </div>
         </div>
       )}
     </div>
