@@ -1,10 +1,14 @@
 import "./App.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Game } from "./PixelGame/Game";
+import SecretEventListener from "./SnakeGame/SecretEventListener";
 
 function App() {
+
+
   return (
     <>
+      <SecretEventListener sequence="snake" to="/secret-snake" />
       <Routes>
         <Route path="/pixelgame" element={<Game />} />
         <Route
