@@ -18,7 +18,7 @@ export const villagersConfig: VillagerInfo[] = [
   {
     id: 1,
     name: "Ariane",
-    position: { xPercent: 70, yPercent: 68 },
+    position: { xPercent: 70, yPercent: 25 },
     intro: "Bienvenue au village ! Je veille sur la place centrale.",
     imageUrl: "/public/assets/pixelgame/villagers/gaulois1.png",
     hoverImageUrl: "/public/assets/pixelgame/villagers/gaulois1_hover.png",
@@ -51,10 +51,10 @@ export const villagersConfig: VillagerInfo[] = [
   {
     id: 4,
     name: "Darius",
-    position: { xPercent: 20, yPercent: 75 },
+    position: { xPercent: 70, yPercent: 68 },
     intro: "Chasseur aguerri, je protège le village des menaces.",
-    imageUrl: "/public/assets/pixelgame/villagers/darius.png",
-    hoverImageUrl: "/public/assets/pixelgame/villagers/darius-hover.png",
+    imageUrl: "/public/assets/pixelgame/villagers/gaulois4.png",
+    hoverImageUrl: "/public/assets/pixelgame/villagers/gaulois4_hover.png",
     menace: THREATS[3],
     healthPoints: 50,
     maxHealthPoints: 100,

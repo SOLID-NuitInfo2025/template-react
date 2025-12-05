@@ -15,7 +15,7 @@ export function Villager({
       title={villager.name}
       alt={villager.name}
       src={
-        isHover && villager.hoverImageUrl
+        isHover && villager.hoverImageUrl && !villager.isVisited
           ? villager.hoverImageUrl
           : villager.imageUrl
       }
@@ -25,10 +25,16 @@ export function Villager({
         width: "320px",
         height: "320px",
         animationDelay: `${(villager.id % 5) * 0.15}s`,
+        filter: villager.isVisited
+          ? "grayscale(100%) brightness(0.8)"
+          : undefined,
+        pointerEvents: villager.isVisited ? "none" : "auto",
+        cursor: villager.isVisited ? "default" : "pointer",
       }}
-      onClick={onClick}
+      onClick={villager.isVisited ? undefined : onClick}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
+      aria-disabled={villager.isVisited}
     />
   );
 }

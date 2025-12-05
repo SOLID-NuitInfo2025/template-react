@@ -21,16 +21,12 @@
 }
 
 .villager-dialog__box {
-  background: rgba(255, 255, 255, 0.95);
-  color: #111;
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(2px);
+  width: 50%;
+  margin: 2em auto;
+  box-shadow: -15px 0 0 0 black, 15px 0 0 0 black, 0 -15px 0 0 black,
+    0 15px 0 0 black;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  padding: 2rem;
 }
 
 .villager-dialog__text {
