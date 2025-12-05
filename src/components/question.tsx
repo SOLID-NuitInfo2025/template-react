@@ -41,7 +41,10 @@ function Question({ question, onAnswer }: QuestionProps) {
     const currentX = e.touches[0].clientX;
     const diff = currentX - startXRef.current;
     // Limite le déplacement pour que la carte reste dans l'écran
-    const cardWidth = Math.min(cardRef.current?.offsetWidth || 0, window.innerWidth * 0.8);
+    const cardWidth = Math.min(
+      cardRef.current?.offsetWidth || 0,
+      window.innerWidth * 0.8
+    );
     const screenWidth = window.innerWidth;
     const margin = 24; // marge de sécurité
     // Limite stricte pour que la carte reste entièrement visible
@@ -76,7 +79,10 @@ function Question({ question, onAnswer }: QuestionProps) {
     const currentX = e.clientX;
     const diff = currentX - startXRef.current;
     // Limite le déplacement pour que la carte reste dans l'écran
-    const cardWidth = Math.min(cardRef.current?.offsetWidth || 0, window.innerWidth * 0.8);
+    const cardWidth = Math.min(
+      cardRef.current?.offsetWidth || 0,
+      window.innerWidth * 0.8
+    );
     const screenWidth = window.innerWidth;
     const margin = 24; // marge de sécurité
     // Limite stricte pour que la carte reste entièrement visible
@@ -147,26 +153,23 @@ function Question({ question, onAnswer }: QuestionProps) {
         {/* Bouton Faux à gauche, effet image de fond */}
         {!showExplanation && (
           <button
+            className="side-answer-button"
+            onClick={() => handleAnswerClick("Faux")}
+            aria-label="Répondre Faux"
             style={{
-              padding: "1.5rem 1rem",
+              padding: "1.2rem 1rem",
               minWidth: "100px",
-              height: "fit-content",
               borderRadius: "12px",
-              border: "none",
-              background: "transparent",
-              color: "#f56565",
-              fontSize: "2rem",
-              fontWeight: 600,
-              transition: "all 0.3s ease",
-              boxShadow: "none",
-              transform: "scale(1)",
-              zIndex: 0,
-              userSelect: "none",
-              pointerEvents: "none",
-              cursor: "default",
+              border: "1px solid rgba(0,0,0,0.06)",
+              background: "linear-gradient(180deg,#fff5f5 0%, #ffecec 100%)",
+              color: "#b91c1c",
+              fontSize: "1.6rem",
+              fontWeight: 700,
+              transition: "transform 0.12s ease, box-shadow 0.12s ease",
+              boxShadow: "0 8px 18px rgba(185,28,28,0.08)",
+              cursor: "pointer",
+              pointerEvents: "auto",
             }}
-            tabIndex={-1}
-            aria-hidden="true"
           >
             Faux
           </button>
@@ -335,26 +338,23 @@ function Question({ question, onAnswer }: QuestionProps) {
         {/* Bouton Vrai à droite, effet image de fond */}
         {!showExplanation && (
           <button
+            className="side-answer-button"
+            onClick={() => handleAnswerClick("Vrai")}
+            aria-label="Répondre Vrai"
             style={{
-              padding: "1.5rem 1rem",
+              padding: "1.2rem 1rem",
               minWidth: "100px",
-              height: "fit-content",
               borderRadius: "12px",
-              border: "none",
-              background: "transparent",
-              color: "#48bb78",
-              fontSize: "2rem",
-              fontWeight: 600,
-              transition: "all 0.3s ease",
-              boxShadow: "none",
-              transform: "scale(1)",
-                zIndex: 0,
-              userSelect: "none",
-              pointerEvents: "none",
-              cursor: "default",
+              border: "1px solid rgba(0,0,0,0.06)",
+              background: "linear-gradient(180deg,#f0fff4 0%, #e6fff0 100%)",
+              color: "#065f46",
+              fontSize: "1.6rem",
+              fontWeight: 700,
+              transition: "transform 0.12s ease, box-shadow 0.12s ease",
+              boxShadow: "0 8px 18px rgba(6,95,70,0.06)",
+              cursor: "pointer",
+              pointerEvents: "auto",
             }}
-            tabIndex={-1}
-            aria-hidden="true"
           >
             Vrai
           </button>

@@ -145,14 +145,11 @@ function Quiz() {
   }
 
   return (
-    <div>
+    <div className="app-container quiz-page">
       {/* Bouton Accueil */}
-      <div style={{ marginBottom: "1.5rem", textAlign: "left" }}>
+      <div className="quiz-header" style={{ marginBottom: "1.25rem" }}>
         <Link to="/" style={{ textDecoration: "none" }}>
-          <button
-            className="quiz-button"
-            style={{ marginRight: "1rem" }}
-          >
+          <button className="quiz-button" style={{ marginRight: "1rem" }}>
             Accueil
           </button>
         </Link>
@@ -160,15 +157,7 @@ function Quiz() {
 
       {/* Affichage des points de compétences uniquement pendant le quiz */}
       {!quizState.showResult && (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "2rem",
-            marginBottom: "2rem",
-            flexWrap: "wrap",
-          }}
-        >
+        <div className="quiz-stats card" style={{ marginBottom: "1rem" }}>
           <div>🔒 Vie privée : {character.viePrivee}</div>
           <div>📊 Données : {character.donnees}</div>
           <div>💰 Argent : {character.argent}</div>
@@ -179,7 +168,7 @@ function Quiz() {
       )}
       {!quizState.showResult ? (
         <div>
-          <div style={{ marginBottom: "1rem", color: "#666" }}>
+          <div className="quiz-progress" style={{ marginBottom: "0.75rem" }}>
             Question {quizState.currentIndex + 1} / {questions.length}
           </div>
           <Question
@@ -188,68 +177,134 @@ function Quiz() {
           />
         </div>
       ) : (
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "70vh" }}>
-          <div style={{
-            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-            borderRadius: "24px",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.18)",
-            padding: "2.5rem 2rem",
-            maxWidth: "480px",
-            width: "100%",
-            color: "white",
-            textAlign: "center",
-          }}>
-            <h2 style={{ fontSize: "2.2rem", marginBottom: "1.2rem", fontWeight: 700, letterSpacing: "1px" }}>Quiz terminé !</h2>
-            <div style={{ fontSize: "1.7rem", fontWeight: 600, marginBottom: "0.5rem" }}>
-              🏆 Score : <span style={{ color: "#ffe066" }}>{quizState.score} / {questions.length}</span>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "60vh",
+          }}
+        >
+          <div
+            className="card result-card"
+            style={{
+              background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+              color: "white",
+              textAlign: "center",
+            }}
+          >
+            <h2
+              style={{
+                marginBottom: "1rem",
+                fontWeight: 700,
+                letterSpacing: "1px",
+              }}
+            >
+              Quiz terminé !
+            </h2>
+            <div
+              style={{
+                fontSize: "1.2rem",
+                fontWeight: 600,
+                marginBottom: "0.5rem",
+              }}
+            >
+              🏆 Score :{" "}
+              <span style={{ color: "#ffe066" }}>
+                {quizState.score} / {questions.length}
+              </span>
             </div>
-            <div style={{ fontSize: "1.2rem", marginBottom: "1.5rem" }}>
-              <span style={{ background: "rgba(255,255,255,0.15)", borderRadius: "12px", padding: "0.3rem 1rem" }}>
+            <div style={{ fontSize: "1rem", marginBottom: "1rem" }}>
+              <span
+                style={{
+                  background: "rgba(255,255,255,0.12)",
+                  borderRadius: "12px",
+                  padding: "0.3rem 0.9rem",
+                }}
+              >
                 {Math.round((quizState.score / questions.length) * 100)}%
               </span>
             </div>
-            <div style={{ margin: "2rem 0 1.5rem 0", textAlign: "left", background: "rgba(0,0,0,0.10)", borderRadius: "16px", padding: "1.2rem" }}>
-              <h3 style={{ fontSize: "1.15rem", marginBottom: "1rem", color: "#ffe066" }}>🌟 Impacts de vos réponses incorrectes :</h3>
+            <div
+              style={{
+                margin: "1.25rem 0",
+                textAlign: "left",
+                background: "rgba(0,0,0,0.10)",
+                borderRadius: "12px",
+                padding: "0.9rem",
+              }}
+            >
+              <h3 style={{ marginBottom: "0.5rem", color: "#ffe066" }}>
+                🌟 Impacts de vos réponses incorrectes :
+              </h3>
               <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                 {quizState.impacts.viePrivee !== 0 && (
-                  <li style={{ padding: "0.5rem 0", fontSize: "1.08rem" }}>
-                    🔒 Vie Privée : <span style={{ color: "#f56565", fontWeight: 600 }}>{quizState.impacts.viePrivee}</span>
+                  <li style={{ padding: "0.4rem 0" }}>
+                    🔒 Vie Privée :{" "}
+                    <span style={{ color: "#f56565", fontWeight: 600 }}>
+                      {quizState.impacts.viePrivee}
+                    </span>
                   </li>
                 )}
                 {quizState.impacts.donnees !== 0 && (
-                  <li style={{ padding: "0.5rem 0", fontSize: "1.08rem" }}>
-                    📊 Données personnelles : <span style={{ color: "#4299e1", fontWeight: 600 }}>{quizState.impacts.donnees}</span>
+                  <li style={{ padding: "0.4rem 0" }}>
+                    📊 Données personnelles :{" "}
+                    <span style={{ color: "#4299e1", fontWeight: 600 }}>
+                      {quizState.impacts.donnees}
+                    </span>
                   </li>
                 )}
                 {quizState.impacts.argent !== 0 && (
-                  <li style={{ padding: "0.5rem 0", fontSize: "1.08rem" }}>
-                    💰 Profits Big Tech : <span style={{ color: "#ecc94b", fontWeight: 600 }}>{quizState.impacts.argent}</span>
+                  <li style={{ padding: "0.4rem 0" }}>
+                    💰 Profits Big Tech :{" "}
+                    <span style={{ color: "#ecc94b", fontWeight: 600 }}>
+                      {quizState.impacts.argent}
+                    </span>
                   </li>
                 )}
                 {quizState.impacts.securite !== 0 && (
-                  <li style={{ padding: "0.5rem 0", fontSize: "1.08rem" }}>
-                    🛡️ Sécurité : <span style={{ color: "#48bb78", fontWeight: 600 }}>{quizState.impacts.securite}</span>
+                  <li style={{ padding: "0.4rem 0" }}>
+                    🛡️ Sécurité :{" "}
+                    <span style={{ color: "#48bb78", fontWeight: 600 }}>
+                      {quizState.impacts.securite}
+                    </span>
                   </li>
                 )}
                 {quizState.impacts.dependance !== 0 && (
-                  <li style={{ padding: "0.5rem 0", fontSize: "1.08rem" }}>
-                    🔗 Dépendance : <span style={{ color: "#a0aec0", fontWeight: 600 }}>{quizState.impacts.dependance}</span>
+                  <li style={{ padding: "0.4rem 0" }}>
+                    🔗 Dépendance :{" "}
+                    <span style={{ color: "#a0aec0", fontWeight: 600 }}>
+                      {quizState.impacts.dependance}
+                    </span>
                   </li>
                 )}
                 {quizState.impacts.durabilite !== 0 && (
-                  <li style={{ padding: "0.5rem 0", fontSize: "1.08rem" }}>
-                    🌍 Durabilité : <span style={{ color: "#38b2ac", fontWeight: 600 }}>{quizState.impacts.durabilite > 0 ? "+" : ""}{quizState.impacts.durabilite}</span>
+                  <li style={{ padding: "0.4rem 0" }}>
+                    🌍 Durabilité :{" "}
+                    <span style={{ color: "#38b2ac", fontWeight: 600 }}>
+                      {quizState.impacts.durabilite > 0 ? "+" : ""}
+                      {quizState.impacts.durabilite}
+                    </span>
                   </li>
                 )}
               </ul>
             </div>
-            <div style={{ margin: "2rem 0 0.5rem 0", fontSize: "1.08rem", color: "#fff", background: "rgba(0,0,0,0.10)", borderRadius: "12px", padding: "1rem" }}>
-              Après ce quiz, retenez surtout que vos données personnelles ont de la valeur et qu’elles peuvent être utilisées bien plus que vous ne l’imaginez. Les services gratuits ne le sont jamais vraiment, la sécurité dépend souvent de quelques bons réflexes, et il est possible d’éviter de devenir trop dépendant des grandes entreprises en choisissant des alternatives. Enfin, n’oubliez pas que votre matériel peut souvent durer plus longtemps qu’on le pense : réparer ou réinstaller vaut souvent mieux que remplacer. En bref, gardez le contrôle sur votre vie numérique.
+            <div style={{ marginTop: "1rem", fontSize: "0.98rem" }}>
+              Après ce quiz, retenez surtout que vos données personnelles ont de
+              la valeur et qu’elles peuvent être utilisées bien plus que vous ne
+              l’imaginez. Les services gratuits ne le sont jamais vraiment, la
+              sécurité dépend souvent de quelques bons réflexes, et il est
+              possible d’éviter de devenir trop dépendant des grandes
+              entreprises en choisissant des alternatives.
             </div>
             <button
               onClick={restart}
               className="quiz-button"
-              style={{ marginTop: "2rem", fontSize: "1.15rem", fontWeight: 600, letterSpacing: "1px" }}
+              style={{
+                marginTop: "1.25rem",
+                fontSize: "1rem",
+                fontWeight: 600,
+              }}
             >
               Recommencer
             </button>
