@@ -1,0 +1,31 @@
+.dependence-bar {
+  position: absolute;
+  top: 48px;
+  left: 12px;
+  width: clamp(180px, 28vw, 360px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #fff;
+}
+
+.dependence-label {
+  font-size: 12px;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+.dependence-track {
+  height: 14px;
+  width: 100%;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.dependence-fill {
+  height: 100%;
+  background: #ff2d2d; /* rouge plein */
+  transition: width 220ms ease; /* animation fluide */
+}

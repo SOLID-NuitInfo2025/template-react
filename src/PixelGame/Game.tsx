@@ -1,3 +1,12 @@
+import { GameProvider } from "./contexts/GameContext";
+import ScreenManager from "./screens/ScreenManager";
+
 export function Game() {
-  return <>karim ta grand mere</>;
+  return (
+    <GameProvider>
+      <div className="app">
+        <ScreenManager />
+      </div>
+    </GameProvider>
+  );
 }
