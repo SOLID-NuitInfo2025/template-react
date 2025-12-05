@@ -14,10 +14,23 @@ export default function Register() {
     const [password, setPassword] = useState('');
     const [currentCharIndex, setCurrentCharIndex] = useState(0);
 
-    // Date de naissance avec 3 sliders séparés (confusion totale)
+    // Date de naissance avec dropdowns désordonnés
     const [day, setDay] = useState(15);
     const [month, setMonth] = useState(6);
     const [year, setYear] = useState(2000);
+
+    // Noms des mois désordonnés
+    const monthNames = [
+        'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+        'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
+    ];
+    const shuffledMonthsWithNames = monthNames
+        .map((name, index) => ({ name, value: index + 1 }))
+        .sort(() => Math.random() - 0.5);
+
+    // Générer des listes désordonnées
+    const shuffledDays = Array.from({ length: 31 }, (_, i) => i + 1).sort(() => Math.random() - 0.5);
+    const shuffledYears = Array.from({ length: 105 }, (_, i) => 1920 + i).sort(() => Math.random() - 0.5);
 
     // Prénom et Nom (inversés)
     const [lastName, setLastName] = useState('');
@@ -163,42 +176,48 @@ export default function Register() {
                         {errors.password && <span className="error">{errors.password}</span>}
                     </div>
 
-                    {/* 3. DATE DE NAISSANCE avec 3 sliders (confusion) */}
+                    {/* 3. DATE DE NAISSANCE avec dropdowns désordonnés */}
                     <div className="form-group">
                         <label>Date de naissance</label>
                         <div className="birth-date-container">
-                            <div className="date-slider-group">
-                                <label className="small-label">Jour: {day}</label>
-                                <input
-                                    type="range"
-                                    min="1"
-                                    max="31"
+                            <div className="date-dropdown-group">
+                                <label className="small-label">Jour</label>
+                                <select
                                     value={day}
                                     onChange={(e) => setDay(parseInt(e.target.value))}
-                                    className="date-slider"
-                                />
+                                    className="date-dropdown"
+                                >
+                                    <option value="">Choisir...</option>
+                                    {shuffledDays.map(d => (
+                                        <option key={d} value={d}>{d}</option>
+                                    ))}
+                                </select>
                             </div>
-                            <div className="date-slider-group">
-                                <label className="small-label">Mois: {month}</label>
-                                <input
-                                    type="range"
-                                    min="1"
-                                    max="12"
+                            <div className="date-dropdown-group">
+                                <label className="small-label">Mois</label>
+                                <select
                                     value={month}
                                     onChange={(e) => setMonth(parseInt(e.target.value))}
-                                    className="date-slider"
-                                />
+                                    className="date-dropdown"
+                                >
+                                    <option value="">Choisir...</option>
+                                    {shuffledMonthsWithNames.map(m => (
+                                        <option key={m.value} value={m.value}>{m.name}</option>
+                                    ))}
+                                </select>
                             </div>
-                            <div className="date-slider-group">
-                                <label className="small-label">Année: {year}</label>
-                                <input
-                                    type="range"
-                                    min="1920"
-                                    max="2024"
+                            <div className="date-dropdown-group">
+                                <label className="small-label">Année</label>
+                                <select
                                     value={year}
                                     onChange={(e) => setYear(parseInt(e.target.value))}
-                                    className="date-slider"
-                                />
+                                    className="date-dropdown"
+                                >
+                                    <option value="">Choisir...</option>
+                                    {shuffledYears.map(y => (
+                                        <option key={y} value={y}>{y}</option>
+                                    ))}
+                                </select>
                             </div>
                             <div className="date-preview">
                                 {day.toString().padStart(2, '0')}/{month.toString().padStart(2, '0')}/{year}

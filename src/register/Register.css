@@ -10,6 +10,7 @@
     padding: 40px 20px;
 }
 
+
 .register-container-modern {
     background: white;
     border-radius: 12px;
@@ -174,71 +175,66 @@
     font-size: 14px;
 }
 
-/* Birth date sliders */
+/* Birth date dropdowns */
 .birth-date-container {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding: 16px;
+    gap: 16px;
+    padding: 20px;
     background: #f7fafc;
     border-radius: 8px;
     border: 1px solid #e2e8f0;
 }
 
-.date-slider-group {
+.date-dropdown-group {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
 }
 
 .small-label {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
-    color: #4a5568;
+    color: #2d3748;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.date-slider {
+.date-dropdown {
     width: 100%;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+    background: white;
+    color: #1a202c;
     cursor: pointer;
-    -webkit-appearance: none;
-    appearance: none;
-    height: 6px;
-    background: linear-gradient(to right, #e2e8f0 0%, #ed8936 100%);
-    border-radius: 3px;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.date-dropdown:hover {
+    border-color: #ed8936;
+}
+
+.date-dropdown:focus {
     outline: none;
-}
-
-.date-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    background: #ed8936;
-    cursor: pointer;
-    border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.date-slider::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    background: #ed8936;
-    cursor: pointer;
-    border-radius: 50%;
-    border: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-color: #ed8936;
+    box-shadow: 0 0 0 3px rgba(237, 137, 54, 0.1);
 }
 
 .date-preview {
     text-align: center;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
     color: #1a202c;
-    padding: 12px;
+    padding: 16px;
     background: white;
-    border-radius: 6px;
-    border: 2px solid #cbd5e0;
+    border-radius: 8px;
+    border: 2px solid #e2e8f0;
     margin-top: 8px;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 /* Text inputs */
