@@ -1,32 +1,27 @@
 .villager-dialog {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 80%;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: end;
-  gap: 12px;
+  width: 1100px;
   padding: 12px;
-  z-index: 5; /* above map markers */
+  height: 369px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .villager-dialog__avatar {
-  width: clamp(64px, 12vw, 120px);
-  height: clamp(64px, 12vw, 120px);
+  width: clamp(300px, 12vw, 400px);
+  height: clamp(300px, 12vw, 400px);
   object-fit: contain;
   image-rendering: pixelated;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .villager-dialog__box {
-  width: 50%;
+  width: 600px;
   margin: 2em auto;
-  box-shadow: -15px 0 0 0 black, 15px 0 0 0 black, 0 -15px 0 0 black,
-    0 15px 0 0 black;
+  box-shadow: -15px 0 0 0 black, 15px 0 0 0 black, 0 -15px 0 0 black, 0 15px 0 0 black;
   display: flex;
   padding: 2rem;
+  height: 50px;
 }
 
 .villager-dialog__text {
