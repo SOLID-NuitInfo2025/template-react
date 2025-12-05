@@ -2,11 +2,90 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
+const letterDescriptions = {
+  n: {
+    badge: "N",
+    title: "Numérique",
+    content: (
+      <>
+        <p>
+          Le <strong>Numérique</strong> représente l'ensemble des technologies
+          digitales qui transforment notre société. Il englobe les outils,
+          plateformes et innovations qui façonnent notre quotidien et notre
+          manière de communiquer, travailler et apprendre.
+        </p>
+        <p>
+          Le numérique est au cœur de la transformation digitale, permettant
+          l'accès à l'information, la création de nouveaux services et
+          l'amélioration de notre qualité de vie.
+        </p>
+      </>
+    ),
+  },
+  i: {
+    badge: "I",
+    title: "Inclusif",
+    content: (
+      <>
+        <p>
+          L'<strong>Inclusif</strong> désigne l'engagement à rendre le
+          numérique accessible à tous, sans discrimination. Cela inclut
+          l'accessibilité pour les personnes en situation de handicap, la
+          réduction de la fracture numérique et l'égalité des chances.
+        </p>
+        <p>
+          Un numérique inclusif garantit que chacun, quel que soit son âge,
+          son origine, ses capacités ou sa situation géographique, puisse
+          bénéficier des opportunités offertes par les technologies.
+        </p>
+      </>
+    ),
+  },
+  r: {
+    badge: "R",
+    title: "Responsable",
+    content: (
+      <>
+        <p>
+          Le numérique <strong>Responsable</strong> implique une utilisation
+          éthique et durable des technologies. Cela englobe la protection de
+          l'environnement (réduction de l'empreinte carbone), la sécurité des
+          données et le respect de la vie privée.
+        </p>
+        <p>
+          Être responsable signifie aussi développer des solutions qui
+          minimisent l'impact écologique, favorisent la sobriété numérique et
+          prennent en compte les enjeux sociaux et environnementaux.
+        </p>
+      </>
+    ),
+  },
+  d: {
+    badge: "D",
+    title: "Durable",
+    content: (
+      <>
+        <p>
+          La <strong>Durabilité</strong> dans le numérique vise à créer des
+          systèmes et solutions pérennes qui respectent l'environnement sur le
+          long terme. Cela passe par l'écoconception, la réduction des déchets
+          électroniques et l'optimisation de la consommation énergétique.
+        </p>
+        <p>
+          Un numérique durable s'inscrit dans une démarche d'avenir,
+          garantissant que les innovations d'aujourd'hui ne compromettent pas
+          les ressources et le bien-être des générations futures.
+        </p>
+      </>
+    ),
+  },
+};
+
 function Home() {
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
 
   const handleLetterClick = (letter: string) => {
-    setSelectedLetter(letter);
+    setSelectedLetter((prev) => (prev === letter ? null : letter));
   };
 
   return (
@@ -43,87 +122,24 @@ function Home() {
           </a>
         </h1>
         <p className="subtitle">Découvrez ce que signifie NIRD</p>
+
+        {/* Description affichée uniquement après clic sur une lettre */}
+        {selectedLetter !== null && (
+          <section
+            className="info-card visible"
+            style={{ margin: "2rem auto 1.5rem auto", maxWidth: 600 }}
+          >
+            <div className="letter-badge">
+              {letterDescriptions[selectedLetter].badge}
+            </div>
+            <h2>{letterDescriptions[selectedLetter].title}</h2>
+            {letterDescriptions[selectedLetter].content}
+          </section>
+        )}
+
         <Link to="/quiz">
           <button className="quiz-button">Tester vos connaissances</button>
         </Link>
-      </div>
-
-      <div className="info-sections">
-        <section
-          id="n"
-          className={`info-card ${selectedLetter === "n" ? "visible" : ""}`}
-        >
-          <div className="letter-badge">N</div>
-          <h2>Numérique</h2>
-          <p>
-            Le <strong>Numérique</strong> représente l'ensemble des technologies
-            digitales qui transforment notre société. Il englobe les outils,
-            plateformes et innovations qui façonnent notre quotidien et notre
-            manière de communiquer, travailler et apprendre.
-          </p>
-          <p>
-            Le numérique est au cœur de la transformation digitale, permettant
-            l'accès à l'information, la création de nouveaux services et
-            l'amélioration de notre qualité de vie.
-          </p>
-        </section>
-
-        <section
-          id="i"
-          className={`info-card ${selectedLetter === "i" ? "visible" : ""}`}
-        >
-          <div className="letter-badge">I</div>
-          <h2>Inclusif</h2>
-          <p>
-            L'<strong>Inclusif</strong> désigne l'engagement à rendre le
-            numérique accessible à tous, sans discrimination. Cela inclut
-            l'accessibilité pour les personnes en situation de handicap, la
-            réduction de la fracture numérique et l'égalité des chances.
-          </p>
-          <p>
-            Un numérique inclusif garantit que chacun, quel que soit son âge,
-            son origine, ses capacités ou sa situation géographique, puisse
-            bénéficier des opportunités offertes par les technologies.
-          </p>
-        </section>
-
-        <section
-          id="r"
-          className={`info-card ${selectedLetter === "r" ? "visible" : ""}`}
-        >
-          <div className="letter-badge">R</div>
-          <h2>Responsable</h2>
-          <p>
-            Le numérique <strong>Responsable</strong> implique une utilisation
-            éthique et durable des technologies. Cela englobe la protection de
-            l'environnement (réduction de l'empreinte carbone), la sécurité des
-            données et le respect de la vie privée.
-          </p>
-          <p>
-            Être responsable signifie aussi développer des solutions qui
-            minimisent l'impact écologique, favorisent la sobriété numérique et
-            prennent en compte les enjeux sociaux et environnementaux.
-          </p>
-        </section>
-
-        <section
-          id="d"
-          className={`info-card ${selectedLetter === "d" ? "visible" : ""}`}
-        >
-          <div className="letter-badge">D</div>
-          <h2>Durable</h2>
-          <p>
-            La <strong>Durabilité</strong> dans le numérique vise à créer des
-            systèmes et solutions pérennes qui respectent l'environnement sur le
-            long terme. Cela passe par l'écoconception, la réduction des déchets
-            électroniques et l'optimisation de la consommation énergétique.
-          </p>
-          <p>
-            Un numérique durable s'inscrit dans une démarche d'avenir,
-            garantissant que les innovations d'aujourd'hui ne compromettent pas
-            les ressources et le bien-être des générations futures.
-          </p>
-        </section>
       </div>
     </div>
   );
