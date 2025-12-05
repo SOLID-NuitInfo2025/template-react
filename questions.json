@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "theme": "Vie privée",
+      "question": "Une application gratuite peut-elle utiliser vos données personnelles sans que vous vous en rendiez compte ?",
+      "correctAnswer": "Vrai",
+      "impact": { "viePrivee": -10, "donnees": -5 },
+      "explain": "Beaucoup d'applications collectent discrètement vos données pour financer leur service.",
+      "tip": "Limiter les applications Faux essentielles ou vérifier leurs permissions."
+    },
+    {
+      "id": 2,
+      "theme": "Vie privée",
+      "question": "Les entreprises ont-elles vraiment besoin de connaître vos données personnelles pour accéder à leurs suite internet ou aux services qu'ils proposent ?",
+      "correctAnswer": "Faux",
+      "impact": { "viePrivee": -8 },
+      "explain": "La plupart des services fonctionnent très bien sans suivre vos comportements.",
+      "tip": "Désactiver le suivi publicitaire."
+    },
+    {
+      "id": 3,
+      "theme": "Vie privée",
+      "question": "Accepter des conditions d’utilisation sans les consulter peut avoir un impact sur mes données personnelles ?",
+      "correctAnswer": "Vrai",
+      "impact": { "viePrivee": -10 },
+      "explain": "Les CGU contiennent souvent l’autorisation d’exploiter vos données.",
+      "tip": "Lire les résumés ou vérifier les points clés avant d’accepter."
+    },
+    {
+      "id": 4,
+      "theme": "Vie privée",
+      "question": "Votre établissement sait-il toujours exactement où partent les données des élèves ?",
+      "correctAnswer": "Faux",
+      "impact": { "viePrivee": -8, "donnees": -5 },
+      "explain": "Les données passent parfois par des serveurs étrangers qui ne sont pas soumis aux même reglementation.",
+      "tip": "Privilégier des services hébergés en Europe."
+    },
+    {
+      "id": 5,
+      "theme": "Données personnelles",
+      "question": "Une photo postée sur un service gratuit peut-elle être analysée automatiquement pour en extraire des informations ?",
+      "correctAnswer": "Vrai",
+      "impact": { "donnees": -8, "viePrivee": -5 },
+      "explain": "Les algorithmes peuvent détecter vos traits, votre lieu ou vos objets (métadonnée).",
+      "tip": "Limiter le partage de photos sur des plateformes Faux maîtrisées."
+    },
+    {
+      "id": 6,
+      "theme": "Données personnelles",
+      "question": "Vos données sont-elles définitivement supprimées quand vous supprimez votre compte ?",
+      "correctAnswer": "Faux",
+      "impact": { "donnees": -10 },
+      "explain": "Beaucoup de services gardent des copies dans leurs serveurs (plusieurs années dans certain cas).",
+      "tip": "Demande de suppression de données personnelles auprès de l’entreprise"
+    },
+    {
+      "id": 7,
+      "theme": "Données personnelles",
+      "question": "Les Big Tech peuvent-elles déduire votre âge, vos préférences ou votre école juste avec vos clics ?",
+      "correctAnswer": "Vrai",
+      "impact": { "donnees": -7 },
+      "explain": "Les entreprises analysent les comportements pour créer un profil précis.",
+      "tip": "Limiter le traçage dans les paramètres de confidentialité."
+    },
+    {
+      "id": 8,
+      "theme": "Données personnelles",
+      "question": "Les données hébergées hors Union européenne sont-elles protégées par les lois européennes ?",
+      "correctAnswer": "Faux",
+      "impact": { "donnees": -10 },
+      "explain": "Hors UE, le RGPD ne s'applique plus entièrement.",
+      "tip": "Choisir des services hébergés en UE."
+    },
+    {
+  "id": 9,
+      "theme": "Profits Big Tech",
+      "question": "Une entreprise peut-elle gagner de l’argent grâce aux informations d’un utilisateur même si son service est “gratuit” ?",
+      "correctAnswer": "Vrai",
+      "impact": { "argent": -8, "donnees": -5 },
+      "explain": "Les données servent à vendre de la publicité ciblée.",
+      "tip": "Utiliser des services sans publicité."
+    },
+    {
+      "id": 10,
+      "theme": "Profits Big Tech",
+      "question": "Les entreprises vendent-elles parfois les données des utilisateurs à d’autres sociétés ?",
+      "correctAnswer": "Vrai",
+      "impact": { "donnees": -10 },
+      "explain": "Certains services revendent ou partagent les données pour du marketing.",
+      "tip": "Refuser le partage de données dans les paramètres."
+    },
+    {
+      "id": 11,
+      "theme": "Profits Big Tech",
+      "question": "Plus vous utilisez un service gratuit, plus il rapporte d’argent à son entreprise.",
+      "correctAnswer": "Vrai",
+      "impact": { "argent": -7 },
+      "explain": "Chaque clic génère des données valorisées par la publicité.",
+      "tip": "Limiter son usage ou choisir des alternatives éthiques."
+    },
+    {
+      "id": 12,
+      "theme": "Sécurité",
+      "question": "Utiliser le même mot de passe partout est-il risqué ?",
+      "correctAnswer": "Vrai",
+      "impact": { "securite": -10 },
+      "explain": "Si un site est piraté, tous vos comptes sont compromis.",
+      "tip": "Utiliser un gestionnaire de mots de passe recommandé par l'ANSSI."
+    },
+    {
+      "id": 13,
+      "theme": "Sécurité",
+      "question": "Une école peut-elle être victime d’un piratage à cause d’un seul compte mal protégé ?",
+      "correctAnswer": "Vrai",
+      "impact": { "securite": -10 },
+      "explain": "Les pirates s’introduisent souvent via un seul compte, souvent moins bien protégé (mots de passe simple).",
+      "tip": "Activer la double authentification et utiliser un mots de passe fiable."
+    },
+    {
+      "id": 14,
+      "theme": "Sécurité",
+      "question": "Le stockage dans le cloud est-il toujours sécurisé, peu importe le fournisseur ?",
+      "correctAnswer": "Faux",
+      "impact": { "securite": -8 },
+      "explain": "Tous les clouds n’offrent pas le même niveau de protection.",
+      "tip": "Choisir un cloud chiffré et reconnu."
+    },
+    {
+      "id": 15,
+      "theme": "Dépendance",
+      "question": "Si un système d’exploitation n’est plus supporté, faut-il forcément changer tous les ordinateurs ?",
+      "correctAnswer": "Faux",
+      "impact": { "dependance": -10 },
+      "explain": "Un OS libre peut remplacer un OS qui n'est plus supporté.",
+      "tip": "Installer des systèmes alternatifs comme Linux."
+    },
+    {
+      "id": 16,
+      "theme": "Dépendance",
+      "question": "Est-il possible qu’un établissement soit obligé d’utiliser un logiciel juste parce que tout le monde l’utilise déjà ?",
+      "correctAnswer": "Vrai",
+      "impact": { "dependance": -8 },
+      "explain": "L’effet de masse crée une dépendance difficile à casser.",
+      "tip": "Introduire des solutions libres petit à petit."
+    },
+    {
+      "id": 17,
+      "theme": "Dépendance",
+      "question": "Les Big Tech peuvent-elles vous empêcher d’installer des applications alternatives sur leurs appareils ?",
+      "correctAnswer": "Vrai",
+      "impact": { "dependance": -10 },
+      "explain": "Certains écosystèmes sont verrVraillés pour garder le contrôle.",
+      "tip": "Choisir des appareils ouverts ou déverrVraillables."
+    },
+    {
+      "id": 18,
+      "theme": "Durabilité",
+      "question": "Un ordinateur déclaré “obsolète” peut-il encore fonctionner très bien avec un autre système ?",
+      "correctAnswer": "Vrai",
+      "impact": { "durabilite": 10, "dependance": -5 },
+      "explain": "Le matériel reste souvent très performant sous un OS léger.",
+      "tip": "Réinstaller un OS libre plutôt que jeter."
+    },
+    {
+      "id": 19,
+      "theme": "Durabilité",
+      "question": "Changer de matériel à cause d’une mise à jour obligatoire augmente-t-il les déchets électroniques ?",
+      "correctAnswer": "Vrai",
+      "impact": { "durabilite": -10 },
+      "explain": "Forcer l’achat crée des tonnes de déchets électroniques inutile.",
+      "tip": "Allonger la durée de vie du matériel en installant un OS léger."
+    },
+    {
+      "id": 20,
+      "theme": "Durabilité",
+      "question": "Réparer, réinstaller ou reconditionner un appareil prolonge-t-il sa durée de vie ?",
+      "correctAnswer": "Vrai",
+      "impact": { "durabilite": 10 },
+      "explain": "La majorité des pannes sont réparables à bas coût.",
+      "tip": "Privilégier la réparation avant le remplacement."
+    }
+  ]
+}
