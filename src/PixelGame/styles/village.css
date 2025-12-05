@@ -1,0 +1,49 @@
+.village-bg {
+  background-image: url("/public/assets/pixelgame/bgvillage.png");
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.villager {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: clamp(48px, 8vw, 120px);
+  height: clamp(48px, 8vw, 120px);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  animation: upDownSnap 0.8s steps(2, jump-none) infinite alternate;
+}
+
+.villager:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.player-pseudo {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  margin: 0;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-weight: 600;
+}
+
+@keyframes upDownSnap {
+  0% {
+    margin-top: -4px;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
