@@ -82,9 +82,9 @@ const letterDescriptions = {
 };
 
 function Home() {
-  const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
+  const [selectedLetter, setSelectedLetter] = useState<'n' | 'i' | 'r' | 'd' | null>(null);
 
-  const handleLetterClick = (letter: string) => {
+  const handleLetterClick = (letter: 'n' | 'i' | 'r' | 'd') => {
     setSelectedLetter((prev) => (prev === letter ? null : letter));
   };
 

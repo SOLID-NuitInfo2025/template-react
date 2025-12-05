@@ -1,4 +1,4 @@
-import type { Entity } from "../types/ENtity";
+import type { Entity } from "../types/Entity";
 import { THREATS } from "./menace.config";
 
 export interface VillagerInfo {

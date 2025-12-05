@@ -1,4 +1,4 @@
-import type { Entity } from "../types/ENtity";
+import type { Entity } from "../types/Entity";
 
 export const THREATS: Entity[] = [
   {

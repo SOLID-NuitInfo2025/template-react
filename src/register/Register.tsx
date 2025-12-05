@@ -81,18 +81,18 @@ export default function Register() {
         }
     };
 
-    const handleClear = () => {
-        setPassword('');
-        setConfirmPassword('');
-        setDay(15);
-        setMonth(6);
-        setYear(2000);
-        setUsername('');
-        setEmail('');
-        setEmailDomain('');
-        setTermsRefused(true);
-        setErrors({});
-    };
+    // const handleClear = () => {
+    //     setPassword('');
+    //     setConfirmPassword('');
+    //     setDay(15);
+    //     setMonth(6);
+    //     setYear(2000);
+    //     setUsername('');
+    //     setEmail('');
+    //     setEmailDomain('');
+    //     setTermsRefused(true);
+    //     setErrors({});
+    // };
 
     return (
         <div className="register-wrapper">

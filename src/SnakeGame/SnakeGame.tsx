@@ -61,14 +61,14 @@ const [headAngle, setHeadAngle] = useState(Math.PI);
   };
 
 
-  const directionToAngle = (d: Direction) => {
-    switch (d) {
-      case "UP": return -Math.PI / 2;
-      case "DOWN": return Math.PI / 2;
-      case "LEFT": return Math.PI;
-      case "RIGHT": return 0;
-    }
-  };
+  // const directionToAngle = (d: Direction) => {
+  //   switch (d) {
+  //     case "UP": return -Math.PI / 2;
+  //     case "DOWN": return Math.PI / 2;
+  //     case "LEFT": return Math.PI;
+  //     case "RIGHT": return 0;
+  //   }
+  // };
 
   // Gestion des touches
 // Gestion des touches
@@ -183,7 +183,7 @@ useEffect(() => {
 
     // snake
     snake.forEach((segment, index) => {
-      const img = index === 0 ? headImg.current : bodyImg.current;
+      // const img = index === 0 ? headImg.current : bodyImg.current;
 
  const px = segment.x * tileSize;
 const py = segment.y * tileSize;
