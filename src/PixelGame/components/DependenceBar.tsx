@@ -9,6 +9,7 @@ export function DependenceBar() {
   const total = gameState.battlesCount || 1;
   const remainingPct = Math.max(0, Math.min(100, 100 - (wins / total) * 100));
   const getPercentage = (value: number, total: number) => {
+    console.log(value, total);
     return ((total - value) / total) * 100;
   };
 

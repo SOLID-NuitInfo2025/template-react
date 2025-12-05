@@ -73,7 +73,6 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
   const completeBattle = useCallback(
     (isBattleWon: boolean, villagerId: number | undefined) => {
       setGameState((prev) => {
-        console.log(prev);
         return {
           ...prev,
           completedBattles: isBattleWon
@@ -84,7 +83,7 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
             ? prev.villagers
             : INITIAL_GAME_STATE.villagers
           ).map((villager) =>
-            villagerId === villager.id
+            villagerId === villager.id && isBattleWon
               ? { ...villager, isVisited: true }
               : villager
           ),
