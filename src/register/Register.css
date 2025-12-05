@@ -254,6 +254,30 @@
     border-color: #667eea;
 }
 
+/* Email simple container */
+.email-simple-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: #f7fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.email-input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.email-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
 /* Email split container */
 .email-split-container {
     display: flex;
@@ -354,13 +378,24 @@
     transition: all 0.2s;
 }
 
+.btn-confirm {
+    background: #fc8181;
+    color: white;
+}
+
+.btn-confirm:hover {
+    background: #f56565;
+    box-shadow: 0 4px 12px rgba(252, 129, 129, 0.4);
+}
+
 .btn-cancel {
-    background: #718096;
+    background: #48bb78;
     color: white;
 }
 
 .btn-cancel:hover {
-    background: #4a5568;
+    background: #38a169;
+    box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
 }
 
 .btn-delete {

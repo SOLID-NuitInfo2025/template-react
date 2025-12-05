@@ -32,13 +32,11 @@ export default function Register() {
     const shuffledDays = Array.from({ length: 31 }, (_, i) => i + 1).sort(() => Math.random() - 0.5);
     const shuffledYears = Array.from({ length: 105 }, (_, i) => 1920 + i).sort(() => Math.random() - 0.5);
 
-    // Prénom et Nom (inversés)
-    const [lastName, setLastName] = useState('');
-    const [firstName, setFirstName] = useState('');
+    // Nom d'utilisateur
+    const [username, setUsername] = useState('');
 
-    // Email avec construction par segments
-    const [emailPart1, setEmailPart1] = useState('');
-    const [emailPart2, setEmailPart2] = useState('');
+    // Email simple
+    const [email, setEmail] = useState('');
     const [emailDomain, setEmailDomain] = useState('');
     const domains = ['gmail.com', 'yahoo.fr', 'hotmail.com', 'outlook.com'];
 
@@ -58,8 +56,7 @@ export default function Register() {
     const validateForm = () => {
         const newErrors: { [key: string]: string } = {};
 
-        if (!firstName.trim()) newErrors.firstName = 'Prénom requis';
-        if (!lastName.trim()) newErrors.lastName = 'Nom requis';
+        if (!username.trim()) newErrors.username = 'Nom d\'utilisateur requis';
 
         if (password.length < 8) newErrors.password = 'Mot de passe trop court (min 8 caractères)';
         if (password !== confirmPassword) newErrors.confirmPassword = 'Les mots de passe ne correspondent pas';
@@ -68,11 +65,9 @@ export default function Register() {
         const age = Math.floor((Date.now() - birthDate.getTime()) / (365.25 * 24 * 60 * 60 * 1000));
         if (age < 18) newErrors.birthDate = 'Vous devez avoir au moins 18 ans';
 
-        const finalEmail = `${emailPart1}${emailPart2}@${emailDomain}`;
+        const finalEmail = `${email}@${emailDomain}`;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(finalEmail)) newErrors.email = 'Email invalide';
-
-        if (termsRefused) newErrors.terms = 'Vous devez accepter les conditions';
+        if (!emailRegex.test(finalEmail)) newErrors.email = 'Email invalide'; if (termsRefused) newErrors.terms = 'Vous devez accepter les conditions';
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -92,10 +87,8 @@ export default function Register() {
         setDay(15);
         setMonth(6);
         setYear(2000);
-        setFirstName('');
-        setLastName('');
-        setEmailPart1('');
-        setEmailPart2('');
+        setUsername('');
+        setEmail('');
         setEmailDomain('');
         setTermsRefused(true);
         setErrors({});
@@ -104,17 +97,6 @@ export default function Register() {
     return (
         <div className="register-wrapper">
             <div className="register-container-modern">
-                {/* Bouton "S'inscrire" en haut dans une balise <a> */}
-                <div className="header-action">
-                    <a
-                        href="#"
-                        className="submit-link"
-                        onClick={(e) => { e.preventDefault(); handleSubmit(); }}
-                    >
-                        S'inscrire →
-                    </a>
-                </div>
-
                 <h1 className="register-title">Créer un compte</h1>
 
                 <form className="register-form" onSubmit={handleSubmit}>
@@ -226,47 +208,28 @@ export default function Register() {
                         {errors.birthDate && <span className="error">{errors.birthDate}</span>}
                     </div>
 
-                    {/* 4. NOM puis PRÉNOM (ordre inversé) */}
+                    {/* 4. NOM D'UTILISATEUR */}
                     <div className="form-group">
-                        <label>Nom de famille</label>
+                        <label>Nom d'utilisateur</label>
                         <input
                             type="text"
-                            value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                             className="text-input"
                         />
-                        {errors.lastName && <span className="error">{errors.lastName}</span>}
+                        {errors.username && <span className="error">{errors.username}</span>}
                     </div>
 
-                    <div className="form-group">
-                        <label>Prénom</label>
-                        <input
-                            type="text"
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
-                            className="text-input"
-                        />
-                        {errors.firstName && <span className="error">{errors.firstName}</span>}
-                    </div>
-
-                    {/* 5. EMAIL en 2 parties + domaine */}
+                    {/* 5. EMAIL simple + domaine */}
                     <div className="form-group">
                         <label>Adresse email</label>
-                        <div className="email-split-container">
+                        <div className="email-simple-container">
                             <input
                                 type="text"
-                                value={emailPart1}
-                                onChange={(e) => setEmailPart1(e.target.value)}
-                                className="email-part"
-                                placeholder="partie 1"
-                            />
-                            <span className="plus-symbol">+</span>
-                            <input
-                                type="text"
-                                value={emailPart2}
-                                onChange={(e) => setEmailPart2(e.target.value)}
-                                className="email-part"
-                                placeholder="partie 2"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="email-input"
+                                placeholder="votre-email"
                             />
                             <span className="at-symbol">@</span>
                             <select
@@ -298,21 +261,21 @@ export default function Register() {
                         {errors.terms && <span className="error">{errors.terms}</span>}
                     </div>
 
-                    {/* Boutons inversés en bas */}
+                    {/* Boutons inversés en bas - Confirmer rouge gauche, Annuler vert droite */}
                     <div className="form-actions">
+                        <button
+                            type="button"
+                            onClick={handleSubmit}
+                            className="btn btn-confirm"
+                        >
+                            Confirmer
+                        </button>
                         <button
                             type="button"
                             onClick={() => navigate('/login')}
                             className="btn btn-cancel"
                         >
-                            Retour
-                        </button>
-                        <button
-                            type="button"
-                            onClick={handleClear}
-                            className="btn btn-delete"
-                        >
-                            Réinitialiser
+                            Annuler
                         </button>
                     </div>
                 </form>
