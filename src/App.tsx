@@ -4,6 +4,8 @@ import { Game } from "./PixelGame/Game";
 import Quiz from "./components/quiz";
 import Home from "./Home";
 import SecretEventListener from "./SnakeGame/SecretEventListener";
+import Login from "./login/Login";
+import Register from "./register/Register";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route path="/pixelgame" element={<Game />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="*" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </>
   );
