@@ -40,7 +40,15 @@ function Question({ question, onAnswer }: QuestionProps) {
     if (!isDragging || showExplanation) return;
     const currentX = e.touches[0].clientX;
     const diff = currentX - startXRef.current;
-    setDragOffset(diff);
+    // Limite le déplacement pour que la carte reste dans l'écran
+    const cardWidth = Math.min(cardRef.current?.offsetWidth || 0, window.innerWidth * 0.8);
+    const screenWidth = window.innerWidth;
+    const margin = 24; // marge de sécurité
+    // Limite stricte pour que la carte reste entièrement visible
+    const maxOffset = (screenWidth - cardWidth) / 2 - margin;
+    const minOffset = -((screenWidth - cardWidth) / 2 - margin);
+    const limitedDiff = Math.max(minOffset, Math.min(diff, maxOffset));
+    setDragOffset(limitedDiff);
   };
 
   const handleTouchEnd = () => {
@@ -67,7 +75,15 @@ function Question({ question, onAnswer }: QuestionProps) {
     if (!isDragging || showExplanation) return;
     const currentX = e.clientX;
     const diff = currentX - startXRef.current;
-    setDragOffset(diff);
+    // Limite le déplacement pour que la carte reste dans l'écran
+    const cardWidth = Math.min(cardRef.current?.offsetWidth || 0, window.innerWidth * 0.8);
+    const screenWidth = window.innerWidth;
+    const margin = 24; // marge de sécurité
+    // Limite stricte pour que la carte reste entièrement visible
+    const maxOffset = (screenWidth - cardWidth) / 2 - margin;
+    const minOffset = -((screenWidth - cardWidth) / 2 - margin);
+    const limitedDiff = Math.max(minOffset, Math.min(diff, maxOffset));
+    setDragOffset(limitedDiff);
   };
 
   const handleMouseUp = () => {
@@ -96,8 +112,16 @@ function Question({ question, onAnswer }: QuestionProps) {
   }, [isDragging, dragOffset]);
 
   const getCardStyle = () => {
-    const baseStyle = {
-      background: "white",
+    let background = "white";
+    if (isDragging && !showExplanation) {
+      if (dragOffset > 50) {
+        background = "#e6ffe5"; // vert clair
+      } else if (dragOffset < -50) {
+        background = "#ffe5e5"; // rouge clair
+      }
+    }
+    return {
+      background,
       borderRadius: "16px",
       padding: "2rem",
       boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
@@ -107,22 +131,6 @@ function Question({ question, onAnswer }: QuestionProps) {
       userSelect: "none" as const,
       touchAction: "pan-y" as const,
     };
-
-    if (isDragging && !showExplanation) {
-      if (dragOffset > 50) {
-        return {
-          ...baseStyle,
-          boxShadow: "0 8px 16px rgba(72, 187, 120, 0.3)",
-        };
-      } else if (dragOffset < -50) {
-        return {
-          ...baseStyle,
-          boxShadow: "0 8px 16px rgba(245, 101, 101, 0.3)",
-        };
-      }
-    }
-
-    return baseStyle;
   };
 
   return (
@@ -136,39 +144,43 @@ function Question({ question, onAnswer }: QuestionProps) {
           justifyContent: "center",
         }}
       >
-        {/* Bouton Faux à gauche */}
+        {/* Bouton Faux à gauche, effet image de fond */}
         {!showExplanation && (
           <button
-            onClick={() => handleAnswerClick("Faux")}
             style={{
               padding: "1.5rem 1rem",
               minWidth: "100px",
               height: "fit-content",
-              cursor: "pointer",
               borderRadius: "12px",
-              border: `3px solid ${dragOffset < -50 ? "#f56565" : "#e2e8f0"}`,
-              background: dragOffset < -50 ? "#fff5f5" : "white",
+              border: "none",
+              background: "transparent",
               color: "#f56565",
-              fontSize: "1.2rem",
+              fontSize: "2rem",
               fontWeight: 600,
               transition: "all 0.3s ease",
-              boxShadow:
-                dragOffset < -50
-                  ? "0 4px 12px rgba(245, 101, 101, 0.3)"
-                  : "0 2px 4px rgba(0, 0, 0, 0.1)",
-              transform: dragOffset < -50 ? "scale(1.05)" : "scale(1)",
+              boxShadow: "none",
+              transform: "scale(1)",
+              zIndex: 0,
+              userSelect: "none",
+              pointerEvents: "none",
+              cursor: "default",
             }}
+            tabIndex={-1}
+            aria-hidden="true"
           >
-            ← Faux
+            Faux
           </button>
         )}
 
         <div
           ref={cardRef}
           style={{
+            zIndex: 10,
             ...getCardStyle(),
-            flex: showExplanation ? "1" : "0 1 500px",
-            maxWidth: showExplanation ? "100%" : "500px",
+            flex: showExplanation ? "1" : "0 1 700px",
+            maxWidth: showExplanation ? "100%" : "700px",
+            width: "100%",
+            boxSizing: "border-box",
           }}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
@@ -320,30 +332,31 @@ function Question({ question, onAnswer }: QuestionProps) {
           )}
         </div>
 
-        {/* Bouton Vrai à droite */}
+        {/* Bouton Vrai à droite, effet image de fond */}
         {!showExplanation && (
           <button
-            onClick={() => handleAnswerClick("Vrai")}
             style={{
               padding: "1.5rem 1rem",
               minWidth: "100px",
               height: "fit-content",
-              cursor: "pointer",
               borderRadius: "12px",
-              border: `3px solid ${dragOffset > 50 ? "#48bb78" : "#e2e8f0"}`,
-              background: dragOffset > 50 ? "#f0fff4" : "white",
+              border: "none",
+              background: "transparent",
               color: "#48bb78",
-              fontSize: "1.2rem",
+              fontSize: "2rem",
               fontWeight: 600,
               transition: "all 0.3s ease",
-              boxShadow:
-                dragOffset > 50
-                  ? "0 4px 12px rgba(72, 187, 120, 0.3)"
-                  : "0 2px 4px rgba(0, 0, 0, 0.1)",
-              transform: dragOffset > 50 ? "scale(1.05)" : "scale(1)",
+              boxShadow: "none",
+              transform: "scale(1)",
+                zIndex: 0,
+              userSelect: "none",
+              pointerEvents: "none",
+              cursor: "default",
             }}
+            tabIndex={-1}
+            aria-hidden="true"
           >
-            Vrai →
+            Vrai
           </button>
         )}
       </div>
