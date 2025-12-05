@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { GameContext } from "../types/GameContext";
 import "../styles/village.css";
-import { villagersConfig, type VillagerInfo } from "../config/villagers.config";
+import type { VillagerInfo } from "../config/villagers.config";
 import { Villager } from "../components/VIllager";
 import { DependenceBar } from "../components/DependenceBar";
 
@@ -15,7 +15,7 @@ export function VillageScreen({ onContinue }: { onContinue: () => void }) {
 
   return (
     <div className="village-bg">
-      {villagersConfig.map((villager) => (
+      {(gameState.villagers ?? []).map((villager) => (
         <Villager
           key={villager.name}
           villager={villager}

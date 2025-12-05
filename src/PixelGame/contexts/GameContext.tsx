@@ -23,7 +23,17 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
     try {
       const savedData = loadGameData();
       if (savedData) {
-        setGameState(savedData);
+        // Merge with defaults to ensure required fields (like villagers) exist
+        setGameState((prev) => ({
+          ...prev,
+          ...savedData,
+          // If saved data lacks villagers, fallback to initial config
+          villagers:
+            (savedData as Partial<GameState>).villagers &&
+            Array.isArray((savedData as Partial<GameState>).villagers)
+              ? (savedData as GameState).villagers
+              : INITIAL_GAME_STATE.villagers,
+        }));
       }
     } catch (error) {
       console.error("Error loading saved data:", error);
@@ -33,16 +43,11 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
     }
   }, []);
 
-  // Sauvegarder à chaque changement de state (hors première initialisation)
   useEffect(() => {
     if (!isInitialLoad) {
       saveGameData(gameState);
     }
   }, [gameState, isInitialLoad]);
-
-  // ---------------------------------------
-  // Actions
-  // ---------------------------------------
 
   const startGame = useCallback(() => {
     setGameState((prev) => ({
@@ -66,19 +71,24 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
   }, []);
 
   const completeBattle = useCallback(
-    (isBattleWon: boolean, villagerId: number) => {
-      setGameState((prev) => ({
-        ...prev,
-        completedBattles: isBattleWon
-          ? prev.completedBattles + 1
-          : prev.completedBattles,
-        battlesWon: isBattleWon ? prev.battlesWon + 1 : prev.battlesWon,
-        villagers: prev.villagers.map((villager) =>
-          villagerId === villager.id
-            ? { ...villager, isVisited: true }
-            : villager
-        ),
-      }));
+    (isBattleWon: boolean, villagerId: number | undefined) => {
+      setGameState((prev) => {
+        return {
+          ...prev,
+          completedBattles: isBattleWon
+            ? prev.completedBattles + 1
+            : prev.completedBattles,
+          battlesWon: isBattleWon ? prev.battlesWon + 1 : prev.battlesWon,
+          villagers: (prev.villagers && Array.isArray(prev.villagers)
+            ? prev.villagers
+            : INITIAL_GAME_STATE.villagers
+          ).map((villager) =>
+            villagerId === villager.id && isBattleWon
+              ? { ...villager, isVisited: true }
+              : villager
+          ),
+        };
+      });
     },
     []
   );
