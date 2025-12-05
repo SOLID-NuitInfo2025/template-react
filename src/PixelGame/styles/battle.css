@@ -29,3 +29,9 @@
   flex-direction: column;
   gap: 8px;
 }
+
+.argument-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
