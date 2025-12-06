@@ -137,6 +137,6 @@ export const THREATS: Entity[] = [
         counterType: "réparabilité",
       },
     ],
-    spriteUrl: "assets/pixelgame/menaces/menace1.gif",
+    spriteUrl: "../../../public/assets/pixelgame/menaces/menace1.gif",
   },
 ];
