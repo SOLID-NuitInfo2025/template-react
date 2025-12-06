@@ -25,7 +25,7 @@ export const THREATS: Entity[] = [
         counterType: "protection-données",
       },
     ],
-    spriteUrl: "../../../public/assets/pixelgame/menage1.gif",
+    spriteUrl: "/src/assets/pixelgame/menaces/menace1.gif",
   },
 
   {
@@ -52,7 +52,7 @@ export const THREATS: Entity[] = [
         counterType: "hébergement-local",
       },
     ],
-    spriteUrl: "../../../public/assets/pixelgame/menace2.gif",
+    spriteUrl: "/src/assets/pixelgame/menaces/menace2.gif",
   },
 
   {
@@ -81,7 +81,7 @@ export const THREATS: Entity[] = [
         counterType: "linux",
       },
     ],
-    spriteUrl: "../../../public/assets/pixelgame/menace3.gif",
+    spriteUrl: "/src/assets/pixelgame/menaces/menace3.gif",
   },
 
   {
@@ -108,7 +108,7 @@ export const THREATS: Entity[] = [
         counterType: "souveraineté",
       },
     ],
-    spriteUrl: "../../../public/assets/pixelgame/menace1.gif",
+    spriteUrl: "/src/assets/pixelgame/menaces/mechant4.gif",
   },
 
   {
