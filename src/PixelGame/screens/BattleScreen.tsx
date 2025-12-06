@@ -155,7 +155,7 @@ export function BattleScreen({
               className="menace-in-battle"
               title={"Player"}
               alt={"Player"}
-              src={"/src/assets/pixelgame/player.gif"}
+              src={"/assets/pixelgame/player.gif"}
               style={{ width: 320, height: 320 }}
             />
             <img
